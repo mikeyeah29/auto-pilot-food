@@ -18,7 +18,7 @@
 			<div class="groceries list">
 
 				<div :class="'item area-' + item.grocery.area + ' d-flex justify-content-between align-items-center mb-2' + ( item.in_basket ? ' done' : '' )" 
-					 v-for="(item, i) in items">
+					 v-for="(item, i) in items" v-if="item.grocery">
 					<span>{{ item.grocery.name }}</span>
 					<span class="ml-auto mr-3">£{{ item.grocery.price.toFixed(2) }}</span>
 					<div class="item_cb">
@@ -81,7 +81,9 @@
 			estimated() {
 				var cost = 0;
 				this.list.items.forEach((item) => {
-					cost += item.grocery.price;
+					if(item.grocery) {
+						cost += item.grocery.price;
+					}
 				});
 				return cost.toFixed(2);
 			}

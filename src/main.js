@@ -38,6 +38,12 @@ library.add(faTimes);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
+// Vue.directive('$model', {
+//   bind: function (el, binding, vnode) {
+//     el.oninput = () => (vnode.context[binding.expression] = el.value)
+//   }
+// });
+
 Vue.config.productionTip = false
 
 new Vue({

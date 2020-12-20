@@ -132,6 +132,9 @@
 			addGrocery() {
 				this.$store.dispatch('addGrocery', this.addGroceryForm);
 				this.addModalIsOpen = false;
+				this.addGroceryForm.name = '';
+				this.addGroceryForm.area = '';
+				this.addGroceryForm.price = '';
 			},
 			removeGrocery() {
 				this.$store.dispatch('deleteGrocery', this.currentGroceryId);

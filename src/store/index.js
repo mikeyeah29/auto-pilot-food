@@ -7,9 +7,14 @@ import shopping_lists from './shopping_lists'
 
 Vue.use(Vuex)
 
+var localUrl = 'http://localhost:8888/auto_pilot_api/public';
+var liveUrl = 'https://autopilot.rwdstaging.co.uk';
+var apiUrl = (window.location.href.indexOf("localhost") > -1 ? localUrl : liveUrl );
+
 export default new Vuex.Store({
 	state: {
-		api_url: 'http://autopilot.rwdstaging.co.uk',
+		// api_url: 'http://localhost:8888/auto_pilot_api/public',
+		api_url: apiUrl,
 		errors: [],
 		success: '',
 		loading: false,

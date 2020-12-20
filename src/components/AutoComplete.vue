@@ -3,7 +3,7 @@
 	<div class="auto-complete">
 		<label>Search groceries to add</label>
 		<div class="d-flex">
-			<input type="text" placeholder="Milk..." v-model="term" @keyup="typed($event)" />
+			<input type="text" placeholder="Milk..." :value="term" @input="typed($event)" />
 			<!-- <div class="button">Add</div> -->
 		</div>
 		<ul class="suggestions">
@@ -28,9 +28,11 @@
 		},
 		methods: {
 			typed(e) {
+				this.term = e.target.value;
 				var groceries = this.$store.state.groceries.groceries;
+				var t = this.term.toLowerCase();
 				this.suggestions = groceries.filter((g) => {
-					if(g.name.toLowerCase().includes(this.term) && this.term !== '') {
+					if(g.name.toLowerCase().includes(t) && this.term !== '') {
 						return g;
 					}
 				});

@@ -23,7 +23,7 @@
 			<div class="groceries list">
 
 				<div :class="'item area-' + item.grocery.area + ' d-flex justify-content-between align-items-center mb-2'" 
-					 v-for="(item, i) in list.items">
+					 v-for="(item, i) in list.items" v-if="item.grocery">
 					<span>{{ item.grocery.name }}</span>
 
 					<div class="item-actions">
@@ -118,9 +118,7 @@
 			}
 		},
 		mounted() {
-			if(this.$store.state.groceries.groceries.length === 0) {
-				this.$store.dispatch('getGroceries');
-			}
+			this.$store.dispatch('getGroceries');
 		},
 		created() {
 			this.getList();
